@@ -20,11 +20,10 @@ const connectDB = require("./config/db");  // ✅ Rename variable to connectDB f
 
 // ✅ Routes
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.send("Hello, this is backend!");
 });
 
-// const adminRoutes = require("./routes/adminRoutes");
-// app.use("/admin", adminRoutes);
+
 
 const portfolioRoutes = require("./routes/portfolioRoutes");
 app.use("/api/portfolio", portfolioRoutes);
