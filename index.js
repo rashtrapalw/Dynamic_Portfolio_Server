@@ -4,26 +4,20 @@ require("dotenv").config();
 
 const app = express();
 
-// ✅ Middleware
+// ✅ Middleware 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // ✅ Database connection
-const connectDB = require("./config/db");  // ✅ Rename variable to connectDB for clarity
-// connectDB(); // ✅ You forgot to actually CALL the function!
-
-// ✅ Load models (optional)
-// If you're not using `admin` directly here, no need to import it
-// const Admin = require("./model/adminSchema");
+const connectDB = require("./config/db");
+connectDB(); // ✅ Call the function to connect to MongoDB
 
 // ✅ Routes
 app.get("/", (req, res) => {
   res.send("Hello, this is backend!");
 });
-
-
 
 const portfolioRoutes = require("./routes/portfolioRoutes");
 app.use("/api/portfolio", portfolioRoutes);
